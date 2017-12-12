@@ -3,20 +3,20 @@ from lib.base_action import BaseAction
 
 class GetMachines(BaseAction):
 
-    def run(self, address=None, uuid=None, limit=100,available=None, name=None):
+    def run(self, address=None, uuid=None, limit=100, name=None):
+        
         uri = '/api/v3/machines'
-        headers = {'Accept':'application/json', 'Content-Type': 'application/json'} 
+        
         params = {
-            'address': address, 
-            'uuid': uuid, 
+            'Address': address, 
+            'Uuid': uuid, 
             'limit': limit, 
-            'available': available, 
-            'name': name
+            'Name': name
         }
         
-        response = drp.get(uri=uri, headers=headers, params=params) 
+        response = self.getAPI(endpoint=uri, params=params) 
 
-        if type(response) is dict:
+        if type(response) is list or type(response) is dict:
             return response 
         else:
             return response.text 

@@ -5,8 +5,19 @@ description: "Get list of machines from Digital Rebar"
 enabled: true
 entry_point: "get_machines.py"
 parameters:
-    message:
+    address:
         type: "string"
-        description: "Message to print."
-        required: true
+        description: "Address of Machine to get."
         position: 0
+    uuid:
+        type: "string"
+        description: "Unique Identifier of Machine to get."
+        position: 1 
+    limit:
+        type: "string"
+        description: "Number of Machines to get."
+        position: 2 
+    name:
+        type: "string"
+        description: "Name of Machine to get."
+        position: 3

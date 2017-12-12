@@ -24,13 +24,21 @@ class BaseAction(Action):
             raise ValueError('"drp_password" config value is required')
 
         self.verify = self.config.get('verify_certificate', False)
+    
+        self.headers = {'Accept': 'application/json', 'Content-Type': 'application/json'}
 
-    def getAPI(self, endpoint, params):
+
+    def getAPI(self, endpoint, params, headers=None):
+        
+        if headers is None:
+            headers = self.headers 
+
         r = requests.get(
             "%s%s" % (self.drp_server, endpoint),
             params=params,
-            auth=(self.drp2_username, self.drp_password),
-            verify=self.verify
+            auth=(self.drp_username, self.drp_password),
+            verify=self.verify,
+            headers=headers
         )
         if r.ok:
             return r.json() 
