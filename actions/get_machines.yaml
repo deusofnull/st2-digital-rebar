@@ -1,0 +1,12 @@
+---
+name: "get_machines"
+runner_type: "python-script"
+description: "Get list of machines from Digital Rebar"
+enabled: true
+entry_point: "get_machines.py"
+parameters:
+    message:
+        type: "string"
+        description: "Message to print."
+        required: true
+        position: 0

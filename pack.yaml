@@ -1,0 +1,10 @@
+---
+ref: digitalrebar 
+name: Digital Rebar 
+description: Pack offering various API features of Digital Rebar Provisioning from RackN.
+keywords:
+    - provisioning
+    - automation 
+version: 0.0.1
+author: Device42 + RackN
+email: support@device42.com
