@@ -1,0 +1,22 @@
+---
+name: "create_dhcp_reservation"
+runner_type: "python-script"
+description: "Get list of machines from Digital Rebar"
+enabled: true
+entry_point: "create_dhcp_reservation.py"
+pack: "digitalrebar"
+parameters:
+    address:
+        type: "string"
+        description: "Address of Machine to get."
+        required: true
+    options:
+        type: "object"
+        description: "JSON object containing DRP dhcp reservation options"
+    strategy:
+        type: "string"
+        description: "DRP dhcp token strategy.  Defaults to 'MAC'. "
+    token:
+        type: "string"
+        description: "Instance of the value stored in strategy, ie a MAC address."
+        required: true 
