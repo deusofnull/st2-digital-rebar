@@ -1,0 +1,38 @@
+---
+name: "create_machine"
+runner_type: "python-script"
+description: "Create machine on Digital Rebar"
+enabled: true
+entry_point: "create_machine.py"
+parameters:
+    address:
+        type: "string"
+        description: "Address of Machine to get."
+    available:
+        type: "string"
+        description: ""
+    bootenv: 
+        type: "string"
+        description: "Bootenv to apply to machine. "
+    name:
+        type: "string"
+        description: "Name of Machine to create."
+        required: true
+    profiles:
+        type: "array"
+        description: "Profiles to add to the machine" 
+    uuid:
+        type: "string"
+        description: "UUID to apply to the machine"
+    stage:
+        type: "string"
+        description: "stage to create machine in"
+    os: 
+        type: "string"
+        description: "os of machine to be created" 
+    description:
+        type: "string"
+        description: "Description of the machine to create"
+    profile: 
+        type: 'object'
+        description: 'Profile of this machine'
