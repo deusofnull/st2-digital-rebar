@@ -1,6 +1,6 @@
 import requests
 from st2common.runners.base_action import Action
-
+import json
 
 class DigitalRebarBaseException(Exception):
     pass
@@ -60,15 +60,22 @@ class BaseAction(Action):
         else:
             return r
 
-    def postAPI(self, endpoint, params=None, payload=None):
+    def postAPI(self, endpoint, params=None, payload=None, headers=None):
+        
+        if headers is None:
+            headers = self.headers
+        
         r = requests.post(
             "%s%s" % (self.drp_server, endpoint),
+            headers=headers,
             params=params,
             data=payload,
             auth=(self.drp_username, self.drp_password),
             verify=self.verify
         )
+        
         if r.ok:
+            print('r.text ', r.text)
             return r.json()
         else:
             return r
