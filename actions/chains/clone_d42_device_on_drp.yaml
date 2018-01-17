@@ -1,0 +1,58 @@
+---
+    chain:
+        -
+            name: "get_device"
+            ref: "device42.get_device_by_id"
+            parameters:
+                device_id: "{{device_id}}"
+            on-success: "create_machine"
+            on-failure: "get_device_fail"
+        - 
+            name: "create_machine"
+            ref: "digitalrebar.create_machine"
+            parameters:
+                name: "{{get_device.result.name}}"
+                address: "{{get_device.result.ip_addresses[0].ip}}"
+                os: "{{get_device.result.os}}"
+                #description: "{{get_device.result.notes}}"
+                #profiles: "{{get_device.result.os}}, from_d42 "
+            on-success: "create_dhcp_reservation"
+            on-failure: "create_machine_fail"
+        - 
+            name: "create_dhcp_reservation"
+            ref: "digitalrebar.create_dhcp_reservation"
+            parameters: 
+                address: "{{get_device.result.ip_address[0].ip}}"
+                strategy: "MAC"
+                token: "{{get_device.result.ip_address[0].macaddress}}"
+                #options: "" #depends on use case / environment 
+            on-failure: 'create_dhcp_reservation_fail'
+            on-success: "add_device_lifecycle" 
+        - 
+            name: "add_device_lifecycle"
+            ref: "device42.add_device_lifecycle"
+            parameters:
+                identifier_type: "device"
+                identifier: "{{get_device.result.name}}"
+                lc: "os_provisioning"
+            on-failure: "add_device_lifecycle_fail"
+        -
+            name: "get_device_fail"
+            ref: "core.local"
+            parameters:
+                cmd: "echo error in get_device"
+        -
+            name: "create_machine_fail"
+            ref: "core.local"
+            parameters:
+                cmd: "echo error in create_machine"
+        - 
+            name: "create_dhcp_lease_reservation_fail"
+            ref: "core.local"
+            parameters:
+                cmd: "echo error in create_dhcp_lease_resrvation"
+        - 
+            name: "add_device_lifecycle_fail"
+            ref: "core.local"
+            parameters:
+                cmd: "echo error in create_ip"

@@ -1,7 +1,7 @@
 ---
 name: "create_dhcp_reservation"
 runner_type: "python-script"
-description: "Get list of machines from Digital Rebar"
+description: "Create DHCP reservation on DRPs DHCP server between MAC and IP"
 enabled: true
 entry_point: "create_dhcp_reservation.py"
 pack: "digitalrebar"

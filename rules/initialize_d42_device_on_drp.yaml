@@ -1,0 +1,21 @@
+---
+    name: "initialize_d42_device_on_drp"
+    pack: "digitalrebar"
+    description: "Creates devices from D42 as  DRP machines"
+    enabled: true
+
+    trigger:
+        type: "core.st2.webhook"
+        parameters:
+            url: "d42_lifecycle"
+
+    criteria: 
+        trigger.body.data.type_id:
+            type: "iequals"
+            pattern: "14" # enter ID of drp_initialize lifecycle from D42 
+    
+    action:
+        ref: "digitalrebar.clone_d42_device_on_drp"
+        parameters: 
+            address: "{{trigger.body.data.device_id}}" 
+

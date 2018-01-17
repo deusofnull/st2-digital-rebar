@@ -1,0 +1,14 @@
+---
+name: "clone_d42_device_on_drp"
+description: "gets device then from d42 and creates it in Digital Rebar."
+runner_type: "action-chain"
+pack: "digitalrebar"
+entry_point: "chains/clone_d42_device_on_drp.yaml"
+
+enabled: true
+
+parameters:
+    device_id:
+        type: "string"
+        description: "ID of device to link the IP that will be created to.  The device_id often times comes from a webhook from Device42. "
+        required: true
