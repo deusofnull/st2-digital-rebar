@@ -1,5 +1,5 @@
 # Digital Rebar Stackstorm Action Pack 
-## With PoC Device42 provisioning automation 
+Including PoC Device42 provisioning automation 
 
 # actions: 
 - create_dhcp_resrvation: creates a DHCP reservation for machines MAC -> IP address  
