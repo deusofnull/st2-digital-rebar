@@ -11,9 +11,10 @@
 - provisioning_automation_rule:  listens for d42 lifecycle event webhooks and kicks off the provisioning_automation action chain when they occur. 
 
 # installation:
+execute: 
 ```$ st2 pack install https://github.com/deusofnull/st2-digital-rebar/tree/master/actions``` 
 
-fill in config file with your relevent information and move to 
+Fill config file ```digitalrebar.yaml.example```  with your relevent environment information and move the file to:  
 ```/opt/stackstorm/configs/digitalrebar.yaml```
 
 
