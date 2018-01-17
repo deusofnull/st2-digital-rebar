@@ -1,9 +1,9 @@
 ---
-name: "clone_d42_device_on_drp"
+name: "provisioning_automation"
 description: "gets device then from d42 and creates it in Digital Rebar."
 runner_type: "action-chain"
 pack: "digitalrebar"
-entry_point: "chains/clone_d42_device_on_drp.yaml"
+entry_point: "chains/provisioning_automation.yaml"
 
 enabled: true
 

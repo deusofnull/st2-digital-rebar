@@ -1,7 +1,7 @@
 ---
-    name: "initialize_d42_device_on_drp"
+    name: "provisioning_automation_rule"
     pack: "digitalrebar"
-    description: "Creates devices from D42 as  DRP machines"
+    description: "Listens for lifecycle event webhook from D42, upon which it runs the provisioning automation action chain."
     enabled: true
 
     trigger:
@@ -15,7 +15,7 @@
             pattern: "14" # enter ID of drp_initialize lifecycle from D42 
     
     action:
-        ref: "digitalrebar.clone_d42_device_on_drp"
+        ref: "digitalrebar.provisioning_automation"
         parameters: 
             address: "{{trigger.body.data.device_id}}" 
 

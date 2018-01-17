@@ -1,0 +1,5 @@
+---
+drp_server: 'https://000.100.200.100:8092' 
+drp_username: 'ex'
+drp_password: 'ex'
+verify_certificate: False
